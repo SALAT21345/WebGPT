@@ -1,0 +1,162 @@
+{% extends 'MainGPT/layout.html' %}
+{% load static %}
+
+{% block BodyContent %}
+<div id="GlobalChat">
+    <h1 id="Btn_SelectedModels" style="user-select: none;">ChatGPT 4o <img id="IconDown" src="{% static 'MainGPT/img/IconDown.png' %}" alt=""></h1>
+    <div id="SelectedModels">
+        <p>ChatGPT 4o</p>
+        <p>ChatGPT 3.5</p>
+        <p>ChatGPT 4o-mini</p>
+    </div>
+    <div id="Chat">
+       
+
+    <div id="BottomPanel"> 
+        <input type="text" id="inputChat" placeholder="Введите сообщение...">
+        <p>Любая нейросеть не гарантирует 100 процентную вероятность точности ответов. <b>Перепроверяйте важную информацию!</b></p>
+    </div>
+    
+        
+    </div>
+
+
+<link rel="stylesheet" href="{% static 'MainGPT/css/Gpt.css' %}">
+
+<!-- Подключение marked.js для рендеринга Markdown -->
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+
+
+
+    function SetBottomPaddingForGptMessage() {
+        const chatContainer = document.getElementById('Chat');
+        const gptMessages = chatContainer.querySelectorAll('.GPTMessage');
+        const lastGptMessage = gptMessages[gptMessages.length - 1];
+        // const previous_lastGptMessage = gptMessages[gptMessages.length - 2];
+
+        const UserMessages = chatContainer.querySelectorAll('.UserMessage');
+        const lastUserMessage = UserMessages[UserMessages.length - 1];
+
+        if (lastGptMessage) {
+            lastUserMessage.style.paddingBottom = '1vw';
+            lastGptMessage.style.paddingBottom = '10vw';
+            // previous_lastGptMessage.style.paddingBottom = '1vw';
+
+        }
+    }
+
+    function SetBottomPaddingForUserMessage() {
+        const chatContainer = document.getElementById('Chat');
+        const UserMessages = chatContainer.querySelectorAll('.UserMessage');
+        const lastUserMessage = UserMessages[UserMessages.length - 1];
+
+        const gptMessages = chatContainer.querySelectorAll('.GPTMessage');
+        const lastGptMessage = gptMessages[gptMessages.length - 1];
+
+        if (UserMessages) {
+            if (lastGptMessage)
+                {
+                    lastGptMessage.style.paddingBottom = '1vw';
+                }
+            lastUserMessage.style.paddingBottom = '10vw';
+        }
+    }
+    
+
+    const _Btn_SelectedModels = document.getElementById("Btn_SelectedModels");
+    const _SelectedModels = document.getElementById("SelectedModels");
+    const userInput = document.getElementById('inputChat'); // Теперь userInput содержит сам input
+
+    _Btn_SelectedModels.addEventListener('click', () => {
+        _SelectedModels.style.display = _SelectedModels.style.display === 'block' ? 'none' : 'block';
+    });
+
+    function CreateNewMessageByUser(message) {
+    const NewUserMessage = document.createElement('div');
+    NewUserMessage.classList.add("UserMessage");
+
+    // Создаём иконку пользователя
+    const UserIcon = document.createElement('img');
+    UserIcon.src = "{% static 'MainGPT/img/icon-user.png' %}";
+    UserIcon.alt = "User Icon";
+
+    // Создаём текстовое сообщение пользователя
+    const UserText = document.createElement('h1');
+    UserText.classList.add("TextUserPrompt");
+    UserText.innerHTML = message;
+    
+
+    // Добавляем иконку и текст в контейнер
+    NewUserMessage.appendChild(UserIcon);
+    NewUserMessage.appendChild(UserText);
+    
+
+    // Добавляем сообщение в чат
+    document.getElementById("Chat").appendChild(NewUserMessage);
+    SetBottomPaddingForUserMessage()
+}
+
+    function CreateNewMessageByGPT(data) {
+        const sanitizedAnswer = data.replace(/<br>/g, '\n'); 
+        const htmlContent = marked.parse(sanitizedAnswer);
+
+        const NewGPTMessage = document.createElement('div');
+        NewGPTMessage.classList.add("GPTMessage");
+
+        const GPTText = document.createElement('h1');
+        GPTText.classList.add("TextGtpAnswer");
+        GPTText.innerHTML = htmlContent;
+
+        const GPTIcon = document.createElement('img');
+        GPTIcon.src = "{% static 'MainGPT/img/icon-GPT.png' %}";
+        GPTIcon.alt = "GPT Icon";
+        GPTIcon.classList.add("GPT-Icon");
+
+        NewGPTMessage.appendChild(GPTIcon);
+        NewGPTMessage.appendChild(GPTText);
+        document.getElementById("Chat").appendChild(NewGPTMessage);
+
+        SetBottomPaddingForGptMessage();
+    }
+
+    function SendPromptGPT(MsgPrompt) {
+        fetch(`http://127.0.0.1:8001/DeepSeek/${encodeURIComponent(MsgPrompt)}`, {
+            method: 'GET',
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Сеть ответила с ошибкой');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log("Запрос отправился и вернулся корректно");
+            console.log(data);
+            CreateNewMessageByGPT(data);
+        })
+        .catch(error => {
+            console.error('Возникла проблема с запросом:', error);
+            CreateNewMessageByGPT('Ошибка при запросе к серверу. Попробуйте позже.');
+        })
+       
+    }
+
+    userInput.addEventListener('keypress', function(event) {
+        if (event.key === 'Enter') {
+            console.log('Кнопка нажата');
+            const MsgPrompt = userInput.value;
+            if (MsgPrompt.trim() !== '') { // Проверка, чтобы не отправлять пустое сообщение
+                CreateNewMessageByUser(MsgPrompt);
+                SendPromptGPT(MsgPrompt);
+                userInput.value = '';
+            }
+            event.preventDefault();
+        }
+    });
+});
+
+</script>
+{% endblock %}

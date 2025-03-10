@@ -1,0 +1,197 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Outfit:wght@100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+#GlobalChat{
+    width: 50vw;
+    height: 95vh;
+    margin-left: 25vw ;
+    background-color: rgb(235, 235, 235);
+    /* border-left: 0.15vw solid rgb(205, 205, 205);
+    border-right: 0.15vw solid rgb(205, 205, 205); */
+    overflow: auto !important;
+    scrollbar-width: none;
+    position: relative;
+    margin-top: 0.4vw;
+}
+#GlobalChat::-webkit-scrollbar {
+    display: none; /* Скрывает скроллбар */
+}
+#Answer::-webkit-scrollbar{
+    margin-left: -2vw;
+}
+
+#BottomPanel{
+    top: 90vh;
+    width: 50vw;
+    height: 10vh;
+    background-color: rgb(235, 235, 235);
+    /* background-color: rgb(255, 0, 0); */
+    position: fixed;
+    
+    
+}
+#BottomPanel p{
+    color: rgb(0, 0, 0);
+    font-size: 1vw;
+    font-family: "Raleway", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    
+    text-align: center;
+    padding-left: 1.9vw;
+    padding-right: 1.9vw;
+    margin-top: 0.5vw;
+}
+
+#inputChat {
+    padding-top: 2vw;
+    width: 90%;
+    height: 30%;
+    border: none;
+    border-radius: 0.5vw;
+    margin-left: 5%;
+    
+    padding: 0.3vw;
+    background-color: #d9d9d9;
+    font-size: 1vw;
+    font-family: "Raleway", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+#inputChat:focus{
+    border: none;
+    outline: none;
+}
+#SelectedModels{
+    position: absolute;
+    margin-left: 18%;
+    display:none;
+    width: 13vw;
+    height: 8vw;
+    background-color: rgb(204, 204, 204) ;
+    border: 0.1vw solid black;
+    border-radius: 1vw;
+    margin-top: 2vw;
+}
+#SelectedModels p{
+    
+    color: rgb(0, 51, 96);
+    text-align: center;
+    font-size: 1.3vw;
+    padding-top: 1vh;
+}
+#SelectedModels p:first-child{
+    margin-top: 1.5vh;
+}
+
+#Btn_SelectedModels{
+    position: absolute;
+    color: rgb(79, 79, 79);
+    font-size: 1.4vw;
+    margin-left: 40%;
+}
+#Btn_SelectedModels:hover{
+    color: rgb(104, 104, 104);
+    font-size: 1.45vw;
+}
+#IconDown{
+    width: 1.5vw;
+    height: 1.2vw;
+}
+
+#Chat{
+    margin-top: 10%;
+    width: 90%;
+    background: none;
+    margin-left: 5%;
+}
+#Chat:last-child{
+    padding-bottom: 10vw;
+    background-color: brown;
+}
+
+.IconUserForChat{
+    width: 1.7vw;
+    height: 1.7vw;
+    margin-top: 3vw;
+}
+
+pre{
+    margin: 10px;
+    padding: 0.3vw;
+    background-color: rgb(210, 210, 210);
+    border-radius: 2vh;
+    color: blue;
+}
+/* Весь контейнер */
+.MessageContainer{ 
+    width: 85%;
+   
+
+}
+/* Стили для текста во всем контейнере */
+
+
+/* Стили для фото в контейнере */
+
+/*      Юзер    */
+.UserMessage{
+    width: 100%;
+    display: flex;
+
+}
+.User-Icon{
+    width: 1.2vw;
+    height: 1.2vw;
+    margin-top: 0.6vw;
+}
+.TextUserPrompt{
+    background-color: #88bbf59c;
+    padding: 0.5vw;
+    border-radius: 0.4vw;
+    margin-left: 0.4vw;
+
+    font-size: 0.8vw;
+    margin-top: 1vh;
+    font-family: "Raleway", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+
+/*          GPT         */
+.GPT-Icon{
+    width: 1.2vw;
+    height: 1.2vw;
+    margin-top: 0.6vw;
+}
+
+.GPTMessage{
+    width: 100%;
+    display: flex;
+}
+
+.TextGtpAnswer{
+    background-color: rgba(143, 180, 254, 0.242);
+    border-radius: 0.3vw;
+    margin-left: 0.4vw;
+    padding:  0.4vw;
+    padding-left: 0.2vw;
+
+    font-size: 0.8vw;
+    margin-top: 1vh;
+    font-family: "Raleway", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+.TextGtpAnswer li{
+    margin-left: 0.8vw;
+}
+.UserMessage img, .GPTMessage img {
+    width: 2vw; /* Увеличил размер */
+    height: 2vw;
+}
+#Chat:last-child{
+    padding-bottom: 50vw;
+}
