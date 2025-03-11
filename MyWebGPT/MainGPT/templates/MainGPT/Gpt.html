@@ -123,8 +123,9 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     function SendPromptGPT(MsgPrompt) {
-        fetch(`http://127.0.0.1:8001/DeepSeek/${encodeURIComponent(MsgPrompt)}`, {
+        fetch(`https://gpt-api-production-ba31.up.railway.app/DeepSeek/${encodeURIComponent(MsgPrompt)}`, {
             method: 'GET',
+            mode: 'cors'  // Указывает, что сервер должен поддерживать CORS
         })
         .then(response => {
             if (!response.ok) {
