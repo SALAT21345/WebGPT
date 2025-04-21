@@ -1,0 +1,10 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+#TopPanel{
+    height: 7vh;
+    width: 100vw;
+    background-color: aqua;
+}

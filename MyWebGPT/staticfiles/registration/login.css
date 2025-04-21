@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+}
+body {
+    background-image: url("https://avatars.mds.yandex.net/i?id=d95b9d1ad4dcbd2c144c384b7f691ee6-5284852-images-thumbs&n=13");
+    background-size: 100% 100vh;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#LoginPanel{
+    margin-top: 30vh;
+    width: 25vw;
+    height: 40vh;
+    background-color: rgba(0, 36, 136, .2);
+    backdrop-filter: blur(20px);
+    border-radius: 10px;
+    border: 2px solid rgba(28, 59, 145, 0.753);
+    text-align: center;
+}
+#Text_Login{
+    margin-top: 1vh;
+    color: white;
+}
+
+#InputUsername{
+    margin-top: 3vh;
+}
+
+#InputPassword{
+    margin-top: 2vh;
+}
+#InputPassword::placeholder,
+#InputUsername::placeholder{
+    color: white;
+}
+.InputForLogin{
+    width: 90%;
+    height: 5vh;
+    border-radius: 25px;
+    background: none;
+    border: 2px solid rgba(28, 59, 145, 0.753);
+    padding-left: 1vw;
+    color: white;
+}
+
+#BtnLogin{
+    border: none;
+    outline: none;
+    margin-top: 2vh;
+    width: 90%;
+    height: 5vh;
+    background-color: white;
+    color: black;
+    border-radius: 25px;
+    font-size: 1.2vw;
+    font-weight: 800;
+}
+#BtnLogin:hover{
+    background-color: blue;
+    color: white;
+}
