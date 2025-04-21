@@ -1,0 +1,68 @@
+{% extends 'MainGPT/layout.html' %}
+{% load static %}
+
+{% block BodyContent %}
+  <form action="https://gpt-api-production-ba31.up.railway.app/GetPhoto" method="post" enctype="multipart/form-data">
+    {% csrf_token %}  <!-- Добавьте этот тег для защиты от CSRF -->
+    <input type="file" id="inputfile" name="file">
+    <button id="btnForLoad" type="button">Upload</button>
+  </form>
+
+  <pre id="ForAnswer"></pre>
+
+  <style>
+    #ForAnswer {
+      width: 20vw;
+      height: 40vh;
+      background-color: aqua;
+      overflow: auto; /* Добавлено для прокрутки, если контент больше, чем область */
+      padding: 10px; /* Добавлено для отступов */
+    }
+  </style>
+  <script>
+    const btn = document.getElementById("btnForLoad");
+    const inputFile = document.getElementById("inputfile");
+    const answerElement = document.getElementById("ForAnswer");  // Кэшируем элемент
+
+    function LoadPhotoAndGetText() {
+      // 1. Проверяем, что файл выбран
+      if (!inputFile.files[0]) {
+        console.warn("Пожалуйста, выберите файл.");
+        return; // Прерываем выполнение функции, если файл не выбран
+      }
+
+      // 2. Создаем FormData только после выбора файла
+      const formdata = new FormData();
+      formdata.append('file', inputFile.files[0]); // Используем 'file' как ключ
+
+      // 3. Отправляем запрос
+      fetch("https://gpt-api-production-ba31.up.railway.app/GetPhoto", {
+        method: "POST",
+        body: formdata
+      })
+      .then(res => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! Status: ${res.status}`); // Обрабатываем ошибки HTTP
+        }
+        return res.json();
+      })
+      .then(data => {
+        // 4. Обрабатываем ответ
+        if (data.example && data.answer) {
+          answerElement.innerHTML = `Пример: ${data.example}<br>Ответ: ${data.answer}`;  // Отображаем данные
+        } else if (data.error) {
+          answerElement.innerHTML = `Ошибка: ${data.error}`; // Отображаем ошибку
+        } else {
+          answerElement.innerHTML = "Не удалось получить ответ.";
+        }
+      })
+      .catch(error => {
+        console.error("Ошибка при отправке запроса:", error);
+        answerElement.innerHTML = `Произошла ошибка: ${error.message}`; // Отображаем общую ошибку
+      });
+    }
+
+    // 5. Правильно назначаем обработчик события
+    btn.addEventListener('click', LoadPhotoAndGetText);
+  </script>
+{% endblock %}

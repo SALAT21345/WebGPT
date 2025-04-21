@@ -1,17 +1,10 @@
-
 from django.shortcuts import render
-from django.http import HttpResponse
-import g4f
-from g4f.client import Client
-
-client = Client()
-
-
-def index(request):
-    return render(request, 'MainGPT/Gpt.html')
-
+from django.contrib.auth.decorators import login_required
+@login_required
 def Gpt(request):
     return render(request, 'MainGPT/Gpt.html')
 
-def news(request):
-    return render(request, 'MainGPT/News.html')
+def TestNewDisgine(request):
+    return render(request, "MainGPT/TestGpt.html")
+
+

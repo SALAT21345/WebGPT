@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'registration/login.css' %}">
+</head>
+<body>
+    <div id="LoginPanel">
+        <form method="post" autocomplete="off">
+            {%csrf_token%}
+            <h1 id="Text_Login">Login</h1>
+            <input class="InputForLogin" id="InputUsername" type="text" name="username" placeholder="Username" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');">
+            <input class="InputForLogin" id="InputPassword" type="password" name="password" placeholder="Password" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');">
+            <input id="BtnLogin" type="submit" value="Login">
+            <p><a href="{% url 'register' %}">Создать аккаунт.</a></p>
+            {{form.errors}}
+        </form>
+
+        
+
+    </div>
+    
+
+</body>
+</html>
+<!-- <form method="post">
+    {% csrf_token %}
+    <label for="InputUsername">Username:</label>
+    <input id="InputUsername" type="text" name="username" placeholder="Username">
+    <label for="InputPassword">Password:</label>
+    <input id="InputPassword" type="password" name="password" placeholder="Password">
+    <input id="BtnLogin" type="submit" value="Login">
+    {{form.errors}}
+</form> -->

@@ -2,162 +2,255 @@
 {% load static %}
 
 {% block BodyContent %}
-<div id="GlobalChat">
-    <h1 id="Btn_SelectedModels" style="user-select: none;">ChatGPT 4o <img id="IconDown" src="{% static 'MainGPT/img/IconDown.png' %}" alt=""></h1>
-    <div id="SelectedModels">
-        <p>ChatGPT 4o</p>
-        <p>ChatGPT 3.5</p>
-        <p>ChatGPT 4o-mini</p>
+<div id="SideBar">
+    <div id="PanelForNewChat">
+        <div id="BlockForBtnCreateNewChat">
+            <h1 id="Text_NewChat">Новый чат</h1>
+            <img id="ImageArroesBottom" src="{%static 'MainGPT/img/icon-arrows-bottom.png'%}" alt="">
+        </div>
+        <div id="HintsForImgPlus"><h1></h1></div>
     </div>
-    <div id="Chat">
-       
+</div>
 
-    <div id="BottomPanel"> 
-        <input type="text" id="inputChat" placeholder="Введите сообщение...">
-        <p>Любая нейросеть не гарантирует 100 процентную вероятность точности ответов. <b>Перепроверяйте важную информацию!</b></p>
-    </div>
+<div id="GlobalChat">
     
+        <div id="Chat">
+            <div id="hints">
+                <div id="BlockForTextInHeaderHints"><h1 id="TextInHeaderHints">Чем могу помочь?</h1></div>
+                <div id="BlockForHints">
+                    <div class="hints"><h1 class="TextInHints">Сколько людей на земле?</h1></div>
+                    <div class="hints"><h1 class="TextInHints">Ааааааааааааааааааааааааааааааа</h1> </div>
+                    <div class="hints"><h1 class="TextInHints">Сколько живут слоны?</h1> </div>
+                </div>
+                
+            </div>
+            <div id="BottomPanel"> 
+                <textarea id="inputChat" placeholder="Введите сообщение..."></textarea>
+                <p>Любая нейросеть не гарантирует 100 процентную вероятность точности ответов. <b>Перепроверяйте важную информацию!</b></p>
+            </div>
+        </div>
         
-    </div>
+</div>
 
 
 <link rel="stylesheet" href="{% static 'MainGPT/css/Gpt.css' %}">
 
 <!-- Подключение marked.js для рендеринга Markdown -->
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-
 <script>
-window.addEventListener('DOMContentLoaded', () => {
+    window.addEventListener('DOMContentLoaded', () => {
 
+function checkForUserMessages() 
+{
+    console.log('функция checkForUserMessages - Начало');
+    const chatElement = document.querySelector('#Chat');
+    const hintsElement = document.querySelector('#hints');
+    
+    if (chatElement != null)
+    {
+        console.log('chatElement != null');
+        if(hintsElement != null)
+        {
+            console.log('hintsElement != null');
+            const userMessages = chatElement.querySelectorAll('.UserMessage'); 
 
+            if (userMessages.length > 0) 
+            {
+                hintsElement.style.display = 'none'; // Скрываем #hints
+                console.log("Скрываем подсказки");
+            } 
 
-    function SetBottomPaddingForGptMessage() {
-        const chatContainer = document.getElementById('Chat');
-        const gptMessages = chatContainer.querySelectorAll('.GPTMessage');
-        const lastGptMessage = gptMessages[gptMessages.length - 1];
-        // const previous_lastGptMessage = gptMessages[gptMessages.length - 2];
-
-        const UserMessages = chatContainer.querySelectorAll('.UserMessage');
-        const lastUserMessage = UserMessages[UserMessages.length - 1];
-
-        if (lastGptMessage) {
-            lastUserMessage.style.paddingBottom = '1vw';
-            lastGptMessage.style.paddingBottom = '10vw';
-            // previous_lastGptMessage.style.paddingBottom = '1vw';
-
+            else {
+                hintsElement.style.display = ''; // Показываем (если скрыто)
+                console.log("Показываем подсказки");
+            }
         }
-    }
-
-    function SetBottomPaddingForUserMessage() {
-        const chatContainer = document.getElementById('Chat');
-        const UserMessages = chatContainer.querySelectorAll('.UserMessage');
-        const lastUserMessage = UserMessages[UserMessages.length - 1];
-
-        const gptMessages = chatContainer.querySelectorAll('.GPTMessage');
-        const lastGptMessage = gptMessages[gptMessages.length - 1];
-
-        if (UserMessages) {
-            if (lastGptMessage)
-                {
-                    lastGptMessage.style.paddingBottom = '1vw';
-                }
-            lastUserMessage.style.paddingBottom = '10vw';
-        }
+    } 
+    else{
+        console.log('chatElement == null');
     }
     
+}
+checkForUserMessages();
 
-    const _Btn_SelectedModels = document.getElementById("Btn_SelectedModels");
-    const _SelectedModels = document.getElementById("SelectedModels");
-    const userInput = document.getElementById('inputChat'); // Теперь userInput содержит сам input
+const input = document.getElementById("inputChat");
+function SetBottomPaddingForGptMessage() {
+    const chatContainer = document.getElementById('Chat');
+    const gptMessages = chatContainer.querySelectorAll('.GPTMessage');
+    const lastGptMessage = gptMessages[gptMessages.length - 1];
+    // const previous_lastGptMessage = gptMessages[gptMessages.length - 2];
 
-    _Btn_SelectedModels.addEventListener('click', () => {
-        _SelectedModels.style.display = _SelectedModels.style.display === 'block' ? 'none' : 'block';
-    });
+    const UserMessages = chatContainer.querySelectorAll('.UserMessage');
+    const lastUserMessage = UserMessages[UserMessages.length - 1];
 
-    function CreateNewMessageByUser(message) {
+    if (lastGptMessage) {
+        lastUserMessage.style.paddingBottom = '1vw';
+        lastGptMessage.style.paddingBottom = '10vw';
+        // previous_lastGptMessage.style.paddingBottom = '1vw';
+
+    }
+}
+
+function SetBottomPaddingForUserMessage() {
+    const chatContainer = document.getElementById('Chat');
+    const UserMessages = chatContainer.querySelectorAll('.UserMessage');
+    const lastUserMessage = UserMessages[UserMessages.length - 1];
+
+    const gptMessages = chatContainer.querySelectorAll('.GPTMessage');
+    const lastGptMessage = gptMessages[gptMessages.length - 1];
+
+    if (UserMessages) {
+        if (lastGptMessage)
+            {
+                lastGptMessage.style.paddingBottom = '1vw';
+            }
+        lastUserMessage.style.paddingBottom = '10vw';
+    }
+}
+
+
+const userInput = document.getElementById('inputChat'); // Теперь userInput содержит сам input
+
+
+
+function CreateNewMessageByUser(message, save = true) {
     const NewUserMessage = document.createElement('div');
     NewUserMessage.classList.add("UserMessage");
 
-    // Создаём иконку пользователя
     const UserIcon = document.createElement('img');
-    UserIcon.src = "{% static 'MainGPT/img/icon-user.png' %}";
+    UserIcon.src = "{% static 'MainGPT/img/free-icon-user.png' %}";
     UserIcon.alt = "User Icon";
+    UserIcon.classList.add("User-Icon");
 
-    // Создаём текстовое сообщение пользователя
     const UserText = document.createElement('h1');
     UserText.classList.add("TextUserPrompt");
     UserText.innerHTML = message;
-    
 
-    // Добавляем иконку и текст в контейнер
     NewUserMessage.appendChild(UserIcon);
     NewUserMessage.appendChild(UserText);
-    
-
-    // Добавляем сообщение в чат
     document.getElementById("Chat").appendChild(NewUserMessage);
-    SetBottomPaddingForUserMessage()
+
+    SetBottomPaddingForUserMessage();
+    checkForUserMessages();
+
+    if (save) {
+        chatHistory.push({ role: "user", content: message });
+        localStorage.setItem("chatHistory", JSON.stringify(chatHistory));
+    }
 }
 
-    function CreateNewMessageByGPT(data) {
-        const sanitizedAnswer = data.replace(/<br>/g, '\n'); 
-        const htmlContent = marked.parse(sanitizedAnswer);
+function CreateNewMessageByGPT(data, save = true) {
+    const sanitizedAnswer = data.replace(/<br>/g, '\n'); 
+    const htmlContent = marked.parse(sanitizedAnswer);
 
-        const NewGPTMessage = document.createElement('div');
-        NewGPTMessage.classList.add("GPTMessage");
+    const NewGPTMessage = document.createElement('div');
+    NewGPTMessage.classList.add("GPTMessage");
 
-        const GPTText = document.createElement('h1');
-        GPTText.classList.add("TextGtpAnswer");
-        GPTText.innerHTML = htmlContent;
+    const GPTText = document.createElement('h1');
+    GPTText.classList.add("TextGtpAnswer");
+    GPTText.innerHTML = htmlContent;
 
-        const GPTIcon = document.createElement('img');
-        GPTIcon.src = "{% static 'MainGPT/img/icon-GPT.png' %}";
-        GPTIcon.alt = "GPT Icon";
-        GPTIcon.classList.add("GPT-Icon");
+    const GPTIcon = document.createElement('img');
+    GPTIcon.src = "{% static 'MainGPT/img/icon-GPT.png' %}";
+    GPTIcon.alt = "GPT Icon";
+    GPTIcon.classList.add("GPT-Icon");
 
-        NewGPTMessage.appendChild(GPTIcon);
-        NewGPTMessage.appendChild(GPTText);
-        document.getElementById("Chat").appendChild(NewGPTMessage);
+    NewGPTMessage.appendChild(GPTIcon);
+    NewGPTMessage.appendChild(GPTText);
+    document.getElementById("Chat").appendChild(NewGPTMessage);
 
-        SetBottomPaddingForGptMessage();
+    SetBottomPaddingForGptMessage();
+    userInput.disabled = false;
+
+    if (save) {
+        chatHistory.push({ role: "gpt", content: data });
+        localStorage.setItem("chatHistory", JSON.stringify(chatHistory));
     }
+}
 
-    function SendPromptGPT(MsgPrompt) {
-        fetch(`https://gpt-api-production-ba31.up.railway.app/DeepSeek/${encodeURIComponent(MsgPrompt)}`, {
-            method: 'GET',
-            mode: 'cors'  // Указывает, что сервер должен поддерживать CORS
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Сеть ответила с ошибкой');
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log("Запрос отправился и вернулся корректно");
-            console.log(data);
-            CreateNewMessageByGPT(data);
-        })
-        .catch(error => {
-            console.error('Возникла проблема с запросом:', error);
-            CreateNewMessageByGPT('Ошибка при запросе к серверу. Попробуйте позже.');
-        })
-       
+function SendPromptGPT(MsgPrompt) {
+    fetch(`https://gpt-api-production-ba31.up.railway.app/DeepSeek/${encodeURIComponent(MsgPrompt)}`, {
+        method: 'GET',
+        mode: 'cors'  // Указывает, что сервер должен поддерживать CORS
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Сеть ответила с ошибкой');
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log("Запрос отправился и вернулся корректно");
+        console.log(data);
+        CreateNewMessageByGPT(data);
+    })
+    .catch(error => {
+        console.error('Возникла проблема с запросом:', error);
+        CreateNewMessageByGPT('Ошибка при запросе к серверу. Попробуйте позже.');
+    })
+   
+}
+
+userInput.addEventListener('keydown', function(event) {
+if (event.key === 'Enter') {
+    if (event.shiftKey) {
+        // Добавляем перенос строки
+        event.preventDefault();
+        const cursorPos = userInput.selectionStart;
+        const value = userInput.value;
+        userInput.value = value.substring(0, cursorPos) + "\n" + value.substring(cursorPos);
+        userInput.selectionStart = userInput.selectionEnd = cursorPos + 1;
+        AutoResizeTextarea(); // обновим высоту
+    } else {
+        // Отправка сообщения
+        event.preventDefault();
+        userInput.disabled = true;
+        const MsgPrompt = userInput.value.trim();
+        if (MsgPrompt !== '') {
+            CreateNewMessageByUser(MsgPrompt);
+            SendPromptGPT(MsgPrompt);
+            userInput.value = '';
+            AutoResizeTextarea();
+        }
     }
+}
+});
+function AutoResizeTextarea() {
+userInput.style.height = "auto"; // сброс
+const lineHeight = 20; // px, можешь точно замерить по шрифту
+const maxHeight = lineHeight * 10;
 
-    userInput.addEventListener('keypress', function(event) {
-        if (event.key === 'Enter') {
-            console.log('Кнопка нажата');
-            const MsgPrompt = userInput.value;
-            if (MsgPrompt.trim() !== '') { // Проверка, чтобы не отправлять пустое сообщение
-                CreateNewMessageByUser(MsgPrompt);
-                SendPromptGPT(MsgPrompt);
-                userInput.value = '';
-            }
-            event.preventDefault();
+if (userInput.scrollHeight > maxHeight) {
+    userInput.style.height = maxHeight + "px";
+    userInput.style.overflowY = "scroll";
+} else {
+    userInput.style.height = userInput.scrollHeight + "px";
+    userInput.style.overflowY = "hidden";
+}
+}
+userInput.addEventListener('input', AutoResizeTextarea);
+let chatHistory = [];
+
+function loadChatHistory() {
+const stored = localStorage.getItem('chatHistory');
+if (stored) {
+    chatHistory = JSON.parse(stored);
+    chatHistory.forEach(msg => {
+        if (msg.role === "user") {
+            CreateNewMessageByUser(msg.content, false);
+        } else if (msg.role === "gpt") {
+            CreateNewMessageByGPT(msg.content, false);
         }
     });
+    AutoResizeTextarea();
+}
+}
+loadChatHistory();
+
 });
+
+
+
 
 </script>
 {% endblock %}

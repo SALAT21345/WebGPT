@@ -1,18 +1,17 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Outfit:wght@100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
-
-
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+*{
+    
+    }
 #GlobalChat{
     width: 50vw;
     height: 95vh;
     margin-left: 25vw ;
-    background-color: rgb(235, 235, 235);
+    background-color: rgb(230, 230, 230);
     /* border-left: 0.15vw solid rgb(205, 205, 205);
     border-right: 0.15vw solid rgb(205, 205, 205); */
     overflow: auto !important;
     scrollbar-width: none;
     position: relative;
-    margin-top: 0.4vw;
 }
 #GlobalChat::-webkit-scrollbar {
     display: none; /* Скрывает скроллбар */
@@ -21,15 +20,16 @@
     margin-left: -2vw;
 }
 
-#BottomPanel{
-    top: 90vh;
-    width: 50vw;
-    height: 10vh;
-    background-color: rgb(235, 235, 235);
-    /* background-color: rgb(255, 0, 0); */
+#BottomPanel {
+    width: 45.4%;
+    background-color: rgb(230, 230, 230);
     position: fixed;
-    
-    
+    bottom: 0;
+    padding: 1vw 0; /* добавляем немного отступа сверху и снизу */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5vw;
 }
 #BottomPanel p{
     color: rgb(0, 0, 0);
@@ -45,45 +45,33 @@
 }
 
 #inputChat {
-    padding-top: 2vw;
-    width: 90%;
-    height: 30%;
+    width: 100%;
+    max-height: 20vh; /* или около 10 строк */
+    min-height: 1vh;
+    overflow-y: auto;
+    resize: none;
+
     border: none;
     border-radius: 0.5vw;
-    margin-left: 5%;
-    
-    padding: 0.3vw;
+    /* margin-left: 5%; */
+    padding: 0.5vw;
+
+
     background-color: #d9d9d9;
-    font-size: 1vw;
+    font-size: 0.85vw;
+    color: black;
     font-family: "Raleway", serif;
     font-optical-sizing: auto;
     font-style: normal;
+    line-height: 1.4em;
+    white-space: pre-wrap;
+    word-wrap: break-word;
 }
 #inputChat:focus{
     border: none;
     outline: none;
 }
-#SelectedModels{
-    position: absolute;
-    margin-left: 18%;
-    display:none;
-    width: 13vw;
-    height: 8vw;
-    background-color: rgb(204, 204, 204) ;
-    border: 0.1vw solid black;
-    border-radius: 1vw;
-    margin-top: 2vw;
-}
-#SelectedModels p{
-    
-    color: rgb(0, 51, 96);
-    text-align: center;
-    font-size: 1.3vw;
-    padding-top: 1vh;
-}
-#SelectedModels p:first-child{
-    margin-top: 1.5vh;
-}
+
 
 #Btn_SelectedModels{
     position: absolute;
@@ -106,23 +94,21 @@
     background: none;
     margin-left: 5%;
 }
-#Chat:last-child{
-    padding-bottom: 10vw;
-    background-color: brown;
-}
+
 
 .IconUserForChat{
-    width: 1.7vw;
-    height: 1.7vw;
-    margin-top: 3vw;
+    /* width: 1.7vw;
+    height: 1.7vw; */
+    margin-top: 3.5vw;
+    background-color: red;
 }
 
 pre{
     margin: 10px;
     padding: 0.3vw;
-    background-color: rgb(210, 210, 210);
+    background-color: rgba(143, 180, 254, 0.242);
     border-radius: 2vh;
-    color: blue;
+    color: rgb(0, 0, 0);
 }
 /* Весь контейнер */
 .MessageContainer{ 
@@ -194,4 +180,118 @@ pre{
 }
 #Chat:last-child{
     padding-bottom: 50vw;
+}
+
+#hints{
+    opacity: 0.85;
+    position: fixed;
+    width: 45.4vw;
+    height: 25vh;
+    /* background-color: red; */
+    margin-top: 22vw;
+}
+#BlockForTextInHeaderHints{
+    width: 100%;
+    height: 30%;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    color: rgb(44, 44, 44);
+    font-family: "Raleway", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+#BlockForHints{
+    margin-top: 2vw;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.hints{
+    text-wrap: wrap;
+    display: flex;
+    color: rgb(43, 43, 43);
+    border-radius: 10px;
+    margin-left: 0.5vw;
+    margin-right: 0.5vw;
+    width: 25%;
+    height: 10vh;
+    background-color: rgb(220, 220, 220);
+    border: 2px solid rgb(205, 205, 205);
+    
+}
+.TextInHints{
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow:hidden;
+    text-wrap: wrap;
+}
+
+#SideBar{
+   position: absolute;
+   width: 20vw;
+   height: 95vh;
+   background-color: rgb(39, 39, 39);
+   border-right: 5px solid rgb(70, 70, 70);
+}
+#PanelForNewChat{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2%;
+    width: 95%;
+    height: 5%;
+    background-color: rgb(45, 45, 45);
+    /* border-right: 15px solid rgb(180, 0, 0);
+    border-bottom: 15px solid rgb(180, 0, 0); */
+    border-radius: 10px;
+}
+#BlockForBtnCreateNewChat{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    color: white;
+    
+}
+
+#Text_NewChat{
+    background-color: rgb(50, 50, 50);
+    width: 30%;
+    padding: 1%;
+    border-radius: 10px;
+    font-size: 18px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 3%;
+
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+#ImageArroesBottom{
+    width: 10%;
+    height: 70%;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 15%;
+}
+
+
+.TextGtpAnswer,
+.TextUserPrompt{
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 0.02vw;
+    line-height: 2.2;
+}
+.TextGtpAnswer ol{
+    margin-left: 0.5vw;
 }
