@@ -6,4 +6,5 @@ urlpatterns = [
     path('',include("MainGPT.urls")),
     path('account/',include("MyAccount.urls")),
     path('accounts/', include("django.contrib.auth.urls")),
+    path('news/', include("news.urls")),
 ]

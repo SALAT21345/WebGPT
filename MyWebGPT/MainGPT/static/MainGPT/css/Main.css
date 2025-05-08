@@ -5,7 +5,7 @@
     margin: 0;    
 }
 body{
-    background-color: rgb(230, 230, 230);
+    background-color: rgb(240, 240, 240);
 }
 h1{
     font-family: "Open Sans", serif;
@@ -14,30 +14,42 @@ h1{
     font-variation-settings: "wdth" 100;
 }
 #TopPanel{
+    display: flex;
     width: 100%;
     height: 5vh;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(245, 245, 245);
+    /* background-color: blue; */
     display: flex;
-    /* border-bottom: 0.15vw solid rgb(176, 176, 176); */
+    /* border-bottom: 0.05vw solid rgb(225, 225, 225); */
     /* box-shadow: 0px 1px 10px 0.1px rgba(150, 150, 150, 0.434); */
     z-index: 3;
 }
 
+#Logo_S{
+    margin-left: 12%;
+}
 #TopPanel img{
-    margin-left: 20%;
+
     width: 2.1vw;
     height: 2.3vw;
     
 }
 #NameProject{
-    margin-top: 0.2vw;
     font-size: 2.1vw;
     height: 100%;
+    width: 35vw;
     font-family: "Comic Neue", serif;
     font-weight: 700;
     font-style: normal;
+
 }
 #BtnAccount{
-    margin-left: 62vw;
-    
+    margin-left: 72vw;
+    /* background-color: red; */
+}
+
+#burgerBtn{
+    margin-left: 2%;
+    width: 15%;
+    height: 100%;
 }

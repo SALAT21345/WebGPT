@@ -15,7 +15,7 @@ SECRET_KEY = 'django-insecure-6ap)rhqtor2dwz97+qsco__b7_q20t%4$xz6=!vt(v!%q%=bjz
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['salat21345.pythonanywhere.com']
+ALLOWED_HOSTS = ['salat21345.pythonanywhere.com','127.0.0.1']
 
 AUTH_USER_MODEL = 'MyAccount.CustomUser'
 
@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'MainGPT',
     'MyAccount',
+    'news',
 ]
 
 MIDDLEWARE = [
