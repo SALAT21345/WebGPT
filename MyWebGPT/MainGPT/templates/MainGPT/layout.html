@@ -4,16 +4,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="icon" href="{% static 'MainGPT/img/favicon.ico'%}" type="image/x-icon">
+    <title>Neiro Salat</title>
     <link rel="stylesheet" href="{% static 'MainGPT/css/Main.css'%}">
+    
+    
+    
 </head>
 <body>
 
     <div id="TopPanel">
+        
         <img id="Logo_S" src="{%static 'MainGPT/img/LogoST.png'%}" alt="">
-        <h1 id="NameProject">ALAT ROOM</h1>
+        <h1 id="NameProject">ALAT NEIRO</h1>
+    </div>
+<img id="burgerBtn" src="{% static 'MainGPT/img/BurgerPanel2.png'%}" alt="">
+
+<div id="SideBar">
+
+    <div class="BlocksBtnOnSideBar" id="BlockAccount" style="margin-top: 5%;">
+        <div class="BlockForBtnOnSidebar">
+            <a id="ButtonToAccount" href="/account/profile" class="Text_BlockForBtnOnSidebar">Аккаунт</a>
+        </div>
     </div>
 
+    <div class="BlocksBtnOnSideBar" id="BlockNewChat">
+        <div class="BlockForBtnOnSidebar" id="BtnCreateNewChat">
+            <h1 id="textNewChat" class="Text_BlockForBtnOnSidebar">Новый чат</h1> 
+        </div>
+    </div>
+    
+    <div id="BtnGeneratePhoto" class="BlocksBtnOnSideBar ChildBlockCreateNewChat">
+        <div class="BlockForBtnOnSidebar">
+            <h1 id="ButtonToAccount" class="Text_BlockForBtnOnSidebar Text_ChildBlockCreateNewChat">Генерация фото</h1>
+        </div>
+    </div>
+
+    <div id="SolvingExamples" class="BlocksBtnOnSideBar ChildBlockCreateNewChat">
+        <div class="BlockForBtnOnSidebar">
+            <h1 id="ButtonToAccount" class="Text_BlockForBtnOnSidebar Text_ChildBlockCreateNewChat">Решение примеров по фото</h1>
+        </div>
+    </div>
+    
+    
+    <div class="BlocksBtnOnSideBar" id="BlockRemoveChat">
+        <div class="BlockForBtnOnSidebar">
+            <h1 class="Text_BlockForBtnOnSidebar">Очистить чат</h1>
+        </div>
+    </div>
+
+    <div class="BlocksBtnOnSideBar" id="BlockSettings">
+        <div class="BlockForBtnOnSidebar">
+            <h1 class="Text_BlockForBtnOnSidebar">Настройки</h1>
+        </div>
+    </div>
+
+    <div id="InfoPanel">
+        <div class="BtnOnInfoPanel">
+            <a href="/" class="ItemsOnInfoPanel">
+                <img class="ImageOnInfoPanel" src="{%static 'MainGPT/img/chat.png'%}" alt="">
+                <h4 class="NameBTNOnInfoPanel">Chat AI</h4>
+            </a>
+        </div>
+
+        <div class="BtnOnInfoPanel">
+            <div class="ItemsOnInfoPanel">
+                <img class="ImageOnInfoPanel" src="{%static 'MainGPT/img/info.png'%}" alt="">
+                <h4 class="NameBTNOnInfoPanel">О нас</h4>
+            </div>
+        </div>
+
+        <div class="BtnOnInfoPanel">
+            <div class="ItemsOnInfoPanel">
+                <img class="ImageOnInfoPanel" src="{%static 'MainGPT/img/Contact.png'%}" alt="">
+                <h4 class="NameBTNOnInfoPanel">Контакты</h4>
+            </div>
+        </div>
+    </div>
+</div>
         {%block BodyContent%}
     
         {% endblock %}

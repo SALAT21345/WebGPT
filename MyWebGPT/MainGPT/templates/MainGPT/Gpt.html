@@ -2,80 +2,67 @@
 {% load static %}
 
 {% block BodyContent %}
-<img id="burgerBtn" src="{% static 'MainGPT/img/BurgerPanel2.png'%}" alt="">
 
-<div id="SideBar">
-
-    <div class="BlocksBtnOnSideBar" id="BlockAccount" style="margin-top: 5%;">
-        <div class="BlockForBtnOnSidebar">
-            <a id="ButtonToAccount" href="/account/profile" class="Text_BlockForBtnOnSidebar">Аккаунт</a>
-        </div>
-        
-    </div>
-
-    <div class="BlocksBtnOnSideBar" id="BlockNewChat">
-        <div class="BlockForBtnOnSidebar" id="BtnCreateNewChat">
-            <h1 id="textNewChat" class="Text_BlockForBtnOnSidebar">Новый чат</h1>
-        </div>
-
-            <div class="BlockForBtnOnSidebar ChildBlockCreateNewChat">
-                <h1 id="textNewChat" class="Text_BlockForBtnOnSidebar ChildTextCreateNewChat">Генерация изображений</h1>
-            </div>
-
-            <div class="BlockForBtnOnSidebar ChildBlockCreateNewChat">
-                <h1 id="textNewChat" class="Text_BlockForBtnOnSidebar ChildTextCreateNewChat">Решение примеров по фото</h1>
-            </div>
-
-    </div>
-
-    <div class="BlocksBtnOnSideBar" id="BlockRemoveChat">
-        <div class="BlockForBtnOnSidebar">
-            <h1 class="Text_BlockForBtnOnSidebar">Отчистить чат</h1>
-        </div>
-    </div>
-
-    <div class="BlocksBtnOnSideBar" id="BlockSettings">
-        <div class="BlockForBtnOnSidebar">
-            <h1 class="Text_BlockForBtnOnSidebar">Настройки</h1>
-        </div>
-    </div>
-
-    <div id="InfoPanel">
-        <div class="BtnOnInfoPanel">
-            <div id="PanelChatOnInfoPanel">
-                <img class="ImageOnInfoPanel" src="{%static 'MainGPT/img/chat.png'%}" alt="">
-                <h4 class="NameBTNOnInfoPanel">Chat AI</h4>
-            </div>
-        </div>
-
-        <div class="BtnOnInfoPanel">
-            <div id="PanelChatOnInfoPanel">
-                <img class="ImageOnInfoPanel" src="{%static 'MainGPT/img/info.png'%}" alt="">
-                <h4 class="NameBTNOnInfoPanel">О нас</h4>
-            </div>
-        </div>
-
-        <div class="BtnOnInfoPanel">
-            <div id="PanelChatOnInfoPanel">
-                <img class="ImageOnInfoPanel" src="{%static 'MainGPT/img/Contact.png'%}" alt="">
-                <h4 class="NameBTNOnInfoPanel">Контакты</h4>
-            </div>
-        </div>
-
-
-    </div>
-</div>
 
 <div id="GlobalChat">
     
         <div id="Chat">
             <div id="hints">
-                <div id="BlockForTextInHeaderHints"><h1 id="TextInHeaderHints">Чем могу помочь?</h1></div>
+                <img id="LogoOnHints" src="{%static 'MainGPT/img/LogoST.png'%}" alt="">
+                <div id="BlockForWelcometext">
+                    <h1 id="WelcomeText">Привет! Я - Нейро Салат</h1>
+                    <h4>Нейро салат - это бесплатный сервис с доступом к разным нейросетям и удобным интерфейсом 🧐</h4>
+                    <div id="BlockForBlocksOnWelcomePanel">
+                        <div class="InfoForBotBlocks">
+                            <div class="BlockForBlockImageOnWelcomePanel">
+                                <div class="BlockForImageOnWelcomePanel">
+                                    <img class="Welcome_ImageOnInfo" src="{%static 'MainGPT/img/chat.png'%}" alt="">   
+                                </div>
+                            </div>
 
+                            <h1 class="Welcome_HeaderOnInfo">Chat AI</h1>
+                            <h3 class="Welcome_DescriptionPanels">Задавай вопросы разным нейросетям и получай ответы и\или советы.</h3>
+                        </div>
+
+                        <div class="InfoForBotBlocks">
+                            <div class="BlockForBlockImageOnWelcomePanel">
+                                <div class="BlockForImageOnWelcomePanel">
+                                    <img class="Welcome_ImageOnInfo" src="{%static 'MainGPT/img/PhotoLogo (2).png'%}" alt="">   
+                                </div>
+                            </div>
+
+                            <h1 class="Welcome_HeaderOnInfo">Генерация фото</h1>
+                            <h3 class="Welcome_DescriptionPanels">Генерируй любые изображения! Все ограничения лишь у тебя в голове</h3>
+                        </div>
+                        <div class="InfoForBotBlocks">
+                            <div class="BlockForBlockImageOnWelcomePanel">
+                                <div class="BlockForImageOnWelcomePanel">
+                                    <img class="Welcome_ImageOnInfo" src="{%static 'MainGPT/img/LogoChat.png'%}" alt="">   
+                                </div>
+                            </div>
+
+                            <h1 class="Welcome_HeaderOnInfo">Решение примеров по фото</h1>
+                            <h3 class="Welcome_DescriptionPanels">Не можешь справиться с математической задачей? - Сфоткай её и отправь мне!</h3>
+                        </div>
+                    </div>
+                    
+               
+                </div>
                 
             </div>
+            
             <div id="BottomPanel"> 
-                <textarea id="inputChat" placeholder="Введите сообщение..."></textarea>
+                <div id="BlockSelectModel">
+                    <h1 id="select_gpt4o" class="BtnModels">Chat GPT-4o</h1>
+                    <h1 id="select_gpt4omini" class="BtnModels">Chat GPT-4o mini</h1>
+                    <h1 id="select_deepseek" class="BtnModels">DeepSeek</h1>
+                    <h1 id="select_llama" class="BtnModels">Llama3-3</h1>
+                </div>
+                <div id="BtnChangeModel">
+                    <h2 id="NameModelOnBtn">Выбрать модель</h2>
+                     <img id="ImgArrowDown" src="{%static 'MainGPT/img/IconDown.png'%}" alt="">
+                </div>
+                <textarea id="inputChat" placeholder="Введите сообщение... " style="user-select: none;"></textarea>
                 <p>Любая нейросеть не гарантирует 100 процентную вероятность точности ответов. <b>Перепроверяйте важную информацию!</b></p>
             </div>
         </div>
@@ -92,12 +79,21 @@
     <script src="{%static 'MainGPT/js/Main.js'%}"></script>
     <script src="https://unpkg.com/fitty"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+   <script src="{%static 'MainGPT/js/Sidebar.js'%}"> </script>
+   <script src="{%static 'MainGPT/js/Sidebar.js'%}"> </script>
 
 <!-- Сторонние файлы и бибилотеки -->
 
 <script>
+
+var ValidModels = ["ChatGPT", "ChatGPTmini", "DeepSeek", "Llama3-3"];
+let ActiveModel = "";
+const userInput = document.getElementById('inputChat'); 
+
+
+
 window.addEventListener('DOMContentLoaded', () => {
-    
+userInput.disabled = true;
 
 
 function checkForUserMessages() 
@@ -117,11 +113,13 @@ function checkForUserMessages()
             if (userMessages.length > 0) 
             {
                 hintsElement.style.display = 'none'; // Скрываем #hints
+                document.getElementById("NameProject").classList.add("NameProjectHide");
                 console.log("Скрываем подсказки");
             } 
 
             else {
                 
+                document.getElementById("NameProject").style.display = 'block';
                 hintsElement.style.display = ''; // Показываем (если скрыто)
                 console.log("Показываем подсказки");
                 
@@ -171,7 +169,7 @@ function SetBottomPaddingForUserMessage() {
 }
 
 
-const userInput = document.getElementById('inputChat'); // Теперь userInput содержит сам input
+
 
 
 
@@ -201,66 +199,57 @@ function CreateNewMessageByUser(message, save = true) {
     }
 }
 
-function CreateNewMessageByGPT(data, save = true) {
-    const sanitizedAnswer = data.replace(/<br>/g, '\n'); 
-    const htmlContent = marked.parse(sanitizedAnswer);
+function CreateNewMessageByGPT(data, save = true, NeedMod) {
+    
+    if(ValidModels.includes(ActiveModel))
+    {
+        let AnswerGPT = data
+        const NewGPTMessage = document.createElement('div');
+        NewGPTMessage.classList.add("GPTMessage");
 
-    const NewGPTMessage = document.createElement('div');
-    NewGPTMessage.classList.add("GPTMessage");
-
-    const GPTText = document.createElement('h1');
-    GPTText.classList.add("TextGtpAnswer");
-    GPTText.innerHTML = htmlContent;
-
-    const GPTIcon = document.createElement('img');
-    GPTIcon.src = "{% static 'MainGPT/img/icon-GPT.png' %}";
-    GPTIcon.alt = "GPT Icon";
-    GPTIcon.classList.add("GPT-Icon");
-
-    NewGPTMessage.appendChild(GPTIcon);
-    NewGPTMessage.appendChild(GPTText);
-    document.getElementById("Chat").appendChild(NewGPTMessage);
-
-    SetBottomPaddingForGptMessage();
-    userInput.disabled = false;
-
-    if (save) {
-        chatHistory.push({ role: "gpt", content: data });
-        localStorage.setItem("chatHistory", JSON.stringify(chatHistory));
-    }
-}
-
-async function PostPromptChatGPT(Prompt) {
-    try {
-        const response = await fetch(`https://gpt-api-production-ba31.up.railway.app/DeepSeek`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            mode: 'cors',
-            body: JSON.stringify({
-                prompt: Prompt
-            })
-        });
-
-        if (!response.ok) {
-            throw new Error('Сеть ответила с ошибкой');
+        const GPTText = document.createElement('h1');
+        GPTText.classList.add("TextGtpAnswer");
+        if(ActiveModel == "DeepSeek" || ActiveModel == "ChatGPT")
+        {
+            AnswerGPT = marked.parse(data.text);
+            console.log("ЭТО БЫЛ ДИП СИК, Преобразование выполнено.")
         }
+        
+        GPTText.innerHTML = AnswerGPT;
 
-        const data = await response.json();
-        console.log("Ответ от GPT пришёл.");
-        return data.response;
+        const GPTIcon = document.createElement('img');
+        GPTIcon.src = "{% static 'MainGPT/img/icon-GPT.png' %}";
+        GPTIcon.alt = "GPT Icon";
+        GPTIcon.classList.add("GPT-Icon");
 
-    } catch (error) {
-        console.error('Возникла проблема с запросом:', error);
-        return null; // или можно выбросить ошибку — зависит от логики
+        NewGPTMessage.appendChild(GPTIcon);
+        NewGPTMessage.appendChild(GPTText);
+        document.getElementById("Chat").appendChild(NewGPTMessage);
+
+        SetBottomPaddingForGptMessage();
+        userInput.disabled = false;
+
+        if (save) {
+            chatHistory.push({ role: "gpt", content: data });
+            localStorage.setItem("chatHistory", JSON.stringify(chatHistory));
+        }
+        
+
+        
+    }else{
+        console.error("Ошибка при выборе модели.")
     }
+
+   
+    
+   
 }
 
-
-
-function SendPromptGPT(MsgPrompt) {
-    fetch(`https://gpt-api-production-ba31.up.railway.app/DeepSeek`, {
+function SendPromptNeiro(MsgPrompt, Model) {
+    const exists = ValidModels.includes(Model);
+    if(exists)
+    {
+        fetch(`https://gpt-api-production-ba31.up.railway.app/${Model}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -279,14 +268,15 @@ function SendPromptGPT(MsgPrompt) {
     .then(data => {
         console.log("Запрос отправился и вернулся корректно");
         console.log(data);
-        
-        CreateNewMessageByGPT(data.response);  // учитываем структуру ответа
-        return data.response
+        CreateNewMessageByGPT(data);  // учитываем структуру ответа
+        return data
     })
     .catch(error => {
         console.error('Возникла проблема с запросом:', error);
         CreateNewMessageByGPT('Ошибка при запросе к серверу. Попробуйте позже.');
     });
+    }
+    
 }
 
 userInput.addEventListener('keydown', function(event) {
@@ -306,7 +296,8 @@ if (event.key === 'Enter') {
         const MsgPrompt = userInput.value.trim();
         if (MsgPrompt !== '') {
             CreateNewMessageByUser(MsgPrompt);
-            SendPromptGPT(MsgPrompt);
+            SendPromptNeiro(MsgPrompt, ActiveModel);  
+            console.log("При отправке запроса была выбрана модель: " + ActiveModel);                          // ЗДЕСЬ МЕНЯЕТСЯ МОДЕЛЬ!!!!!
             userInput.value = '';
             AutoResizeTextarea();
         }
@@ -349,19 +340,7 @@ loadChatHistory();
 });
 
 
-const BlocksBtnOnSideBar = document.getElementsByClassName("BlocksBtnOnSideBar");
 
-for (let block of BlocksBtnOnSideBar) {
-    block.addEventListener("mouseover", () => {
-        block.classList.remove("BlocksBtnOnSideBar_NotHover");
-        block.classList.add("BlocksBtnOnSideBar_Hover");
-    });
-
-    block.addEventListener("mouseout", () => {
-        block.classList.remove("BlocksBtnOnSideBar_Hover");
-        block.classList.add("BlocksBtnOnSideBar_NotHover");
-    });
-}
 
 function removeHistory(){
     localStorage.clear();
@@ -370,33 +349,68 @@ function removeHistory(){
 const BlockRemoveChat = document.getElementById("BlockRemoveChat").addEventListener("click", removeHistory);
 
 
+const BtnModels = document.getElementsByClassName("BtnModels");
 
 
-const BlockNewChat = document.getElementById("BlockNewChat");
-// BlockRemoveChat BlockSettings
-BlockNewChat.addEventListener("click", (event) => {
-
-    var IsActive = false;
-    if (event.target === BlockNewChat) return;
-    
-    const childBlocks = document.querySelectorAll(".ChildBlockCreateNewChat");
-    console.log("TEST");
-    
-    for (let block of childBlocks) {
-        if (block.style.display === 'none') {
-            block.style.display = 'block'; 
-            IsActive = true;
-        } else {
-            block.style.display = 'none'; 
-        }
-    }
-
-    if(IsActive == true)
+userInput.addEventListener("mouseover",() =>{
+    if(ActiveModel == "")
     {
-        document.getElementById("BlockRemoveChat").style.transform = "translateY(150px)";
-        document.getElementById("BlockSettings").style.transform = "translateY(150px)";
+       userInput.placeholder = "Выберите модель";
+       userInput.classList.add("inputChatErrorModel");
     }
-});
+})
+
+userInput.addEventListener("mouseout", () =>{
+
+    userInput.classList.remove("inputChatErrorModel");
+    userInput.placeholder = "Введите сообщение";
+    
+    
+})
+
+for (let i = 0; i < BtnModels.length; i++) {
+    const model = BtnModels[i];
+
+    model.addEventListener("click", () => {
+        const BlockSelectModel = document.getElementById("BlockSelectModel");
+        userInput.disabled = false;
+        switch (model.textContent) {
+            case "Chat GPT-4o":
+                ActiveModel = "ChatGPT";
+                break;
+            case "Chat GPT-4o mini": 
+                ActiveModel = "ChatGPTmini";
+                break;
+            case "DeepSeek":
+                ActiveModel = "DeepSeek";
+                break;
+            case "Llama3-3":
+                ActiveModel = "Llama3-3";
+                break;
+            default:
+                ActiveModel = "Выбрать модель";
+                break;
+        }
+        BlockSelectModel.style.display = 'none';
+        console.log("ActiveModel:", ActiveModel);
+        document.getElementById("NameModelOnBtn").textContent = model.textContent;
+    });
+}
+const BtnChangeModel = document.getElementById("BtnChangeModel");
+
+BtnChangeModel.addEventListener("click", () =>{
+    const BlockSelectModel = document.getElementById("BlockSelectModel");
+
+    if(BlockSelectModel.style.display == 'none')
+    {
+        BlockSelectModel.style.display = 'block';        
+    }else{
+        BlockSelectModel.style.display = 'none';        
+    }
+})
+
+
+
 
 </script>
 {% endblock %}
