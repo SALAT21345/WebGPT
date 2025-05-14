@@ -79,8 +79,7 @@
     <script src="{%static 'MainGPT/js/Main.js'%}"></script>
     <script src="https://unpkg.com/fitty"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-   <script src="{%static 'MainGPT/js/Sidebar.js'%}"> </script>
-   <script src="{%static 'MainGPT/js/Sidebar.js'%}"> </script>
+    <script src="{%static 'MainGPT/js/Sidebar.js'%}"> </script>
 
 <!-- Сторонние файлы и бибилотеки -->
 
@@ -211,8 +210,13 @@ function CreateNewMessageByGPT(data, save = true, NeedMod) {
         GPTText.classList.add("TextGtpAnswer");
         if(ActiveModel == "DeepSeek" || ActiveModel == "ChatGPT")
         {
-            AnswerGPT = marked.parse(data.text);
-            console.log("ЭТО БЫЛ ДИП СИК, Преобразование выполнено.")
+            try{
+                AnswerGPT = marked.parse(data.text);
+            }
+            catch{
+                console.log("Преобразование не удалось.")
+            }
+            
         }
         
         GPTText.innerHTML = AnswerGPT;
