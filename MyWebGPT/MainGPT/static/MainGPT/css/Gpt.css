@@ -1,336 +1,372 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
-#GlobalChat{
-    width: 50vw;
-    height: 95vh;
-    margin-left: 25vw ;
-    background-color: rgb(240, 240, 240);
-    /* border-left: 0.15vw solid rgb(205, 205, 205);
-    border-right: 0.15vw solid rgb(205, 205, 205); */
-    overflow: auto !important;
-    scrollbar-width: none;
+*{
+    margin: 0;
+    padding: 0;
+      font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+  }
+@media (min-width: 768px) { /* Здесь начинаются стили для ПК */
+body{
+  
+  background-size: 100vw 100vh;
+  background-repeat: no-repeat;
+}
+
+#GlobalPage{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+#TopPanel{
+  position: absolute;
+  width: 100vw;
+  height: 7.5vh;
+  background-color: #0f131d;
+  border-bottom: 1px solid  #273252;
+  box-shadow: 10px 0px 15px 15px #02030B;
+}
+#WelcomeBlock{
+  position: absolute;
+  display: block;
+  width: 40vw;
+  height: 20vw;
+  margin-top: 10vh;
+  margin-left: 6vw;
+  text-align: center;
+  align-items: center;
+}
+
+#Butn_ThisYou{
+  background-color: rgb(17, 17, 17);
+  color: rgb(255, 206, 206);
+  box-shadow: 0px 0px 10px 2px #1f2e5f;
+  padding: 0.2%;
+  padding-bottom: 0.4%;
+  margin-top: 1vw;
+  width: 30%;
+  font-size: 22px;
+  border-radius: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#Butn_ThisYou:hover{
+  scale: 1.1;
+}
+
+#GlobalBlockChat{
     position: relative;
-}
-#GlobalChat::-webkit-scrollbar {
-    display: none; /* Скрывает скроллбар */
-}
-#Answer::-webkit-scrollbar{
-    margin-left: -2vw;
-}
-
-#BottomPanel {
-    width: 45.4%;
-    background-color: rgb(240, 240, 240);
-    position: fixed;
-    bottom: 0;
-    padding: 1vw 0; /* добавляем немного отступа сверху и снизу */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5vw;
-}
-#BottomPanel p{
-    color: rgb(0, 0, 0);
-    font-size: 1vw;
-    font-family: "Raleway", serif;
-    font-optical-sizing: auto;
-    font-style: normal;
-    
-    text-align: center;
-    padding-left: 1.9vw;
-    padding-right: 1.9vw;
-    margin-top: 0.5vw;
-}
-
-#inputChat {
-    width: 100%;
-    max-height: 20vh; /* или около 10 строк */
-    min-height: 1vh;
-    overflow-y: auto;
-    resize: none;
-
-    border: none;
-    border-radius: 0.5vw;
-    /* margin-left: 5%; */
-    padding: 0.5vw;
-
-
-    background-color: #d9d9d9;
-    font-size: 0.85vw;
-    color: black;
-    font-family: "Raleway", serif;
-    font-optical-sizing: auto;
-    font-style: normal;
-    line-height: 1.4em;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-}
-#inputChat:focus{
-    border: none;
-    outline: none;
-}
-.inputChatErrorModel::placeholder{
-    font-family: "Raleway", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
-    color: black;
-    
-    font-size: 20px;
-}
-
-#Btn_SelectedModels{
-    position: absolute;
-    color: rgb(79, 79, 79);
-    font-size: 1.4vw;
-    margin-left: 40%;
-}
-#Btn_SelectedModels:hover{
-    color: rgb(104, 104, 104);
-    font-size: 1.45vw;
-}
-#IconDown{
-    width: 1.5vw;
-    height: 1.2vw;
-}
-
-#Chat{
-    margin-top: 10%;
-    width: 90%;
-    background: none;
-    margin-left: 5%;
-}
-
-
-.IconUserForChat{
-    /* width: 1.7vw;
-    height: 1.7vw; */
-    margin-top: 3.5vw;
-    background-color: red;
-}
-
-pre{
-    margin: 10px;
-    padding: 0.3vw;
-    background-color: rgba(143, 180, 254, 0.242);
-    border-radius: 2vh;
-    color: rgb(0, 0, 0);
-}
-/* Весь контейнер */
-.MessageContainer{ 
-    width: 85%;
-   
-
-}
-/* Стили для текста во всем контейнере */
-
-
-/* Стили для фото в контейнере */
-
-/*      Юзер    */
-.UserMessage{
-    width: 100%;
+    background-color:#121825;
+    padding: 1%;
+    border-radius: 15px;
     display: flex;
 
 }
-.User-Icon{
-    width: 1.2vw;
-    height: 1.2vw;
-    margin-top: 0.6vw;
+.Small_GlobalBlockChat{
+  width: 40%;
+  height: 60%;
+  margin-left: 50%;
+  margin-top: 10%;
 }
-.TextUserPrompt{
-    background-color: #88bbf59c;
-    padding: 0.5vw;
-    border-radius: 0.4vw;
-    margin-left: 0.4vw;
-
-    font-size: 0.8vw;
-    margin-top: 1vh;
-    font-family: "Raleway", serif;
-    font-optical-sizing: auto;
-    font-style: normal;
+.Big_GlobalBlockChat{
+  width: 60%;
+  height: 80%;
+  margin-left: 20%;
+  margin-top: 5%;
 }
 
 
-/*          GPT         */
-.GPT-Icon{
-    width: 1.2vw;
-    height: 1.2vw;
-    margin-top: 0.6vw;
-}
-
-.GPTMessage{
-    width: 100%;
-    display: flex;
-}
-
-.TextGtpAnswer{
-    background-color: rgba(143, 180, 254, 0.242);
-    border-radius: 0.3vw;
-    margin-left: 0.4vw;
-    padding:  0.4vw;
-    padding-left: 0.2vw;
-
-    font-size: 0.8vw;
-    margin-top: 1vh;
-    font-family: "Raleway", serif;
-    font-optical-sizing: auto;
-    font-style: normal;
-}
-.TextGtpAnswer li{
-    margin-left: 0.8vw;
-}
-.UserMessage img, .GPTMessage img {
-    width: 2vw; /* Увеличил размер */
-    height: 2vw;
-}
-#Chat:last-child{
-    padding-bottom: 50vw;
-}
-
-
-#hints{
-    display: flex;
-    height: 46vh;
-    width: 100%;
- 
-}
-#BlockForWelcometext{
-    width: 100%;
-    height: 50%;
-    margin-top: 25%;
-    text-align: center;
-    
-}
-#WelcomeText{
-    font-weight: 550;
-}
-#BlockForBlocksOnWelcomePanel{
-    display: flex;
-    width: 100%;
-    height: 100%;
-}
-#BlockForWelcometext h4{
-    font-weight: 500;
-    color: rgb(120, 120, 120);
-}
-
-#BtnChangeModel
+#TopPanelForChat
 {
-    position: absolute;
-    background-color: rgb(230,230,230);
-    margin-top: -1.5vw;
-    left: 0;
-    border-radius: 6px;
-    padding: 0.2vw;
-    display: flex;
-    transition: background-color 0.2s;
-
+  position: absolute;
+  width: 99.8%;
+  height: 10%;
+  left: 0;
+  top: 0;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  background-color:#121825;
+  border: 1px solid #1a2235;
 }
-#BtnChangeModel:hover
-{
-    background-color: rgb(220,220,220);
+#BlockFor_BtnChangeSize{
+  margin-left: 92%;
+  margin-top: 1%;
+  width: 7%;
+  height: 70%;
+  border-radius: 10px;
+  display: flex;
+  align-content: center;
+  align-items: center;
 }
-
-#NameModelOnBtn{
-    font-size: 16px;
-    user-select: none;
-    font-weight: 450;
-    color: rgb(180, 180, 180);
+.BlockFor_BtnChangeSize_Hover{
+  transition: 0.5s;
+  background-color: #131b2b;
+  border: 1px solid #121825;
 }
-#ImgArrowDown{
-    margin-top: auto;
-    margin-bottom: auto;
-    margin-left: 3px;
-    width: 10px;
-    height: 80%;
-    user-select: none;
-}
-
-
-.InfoForBotBlocks{
-    display: flex;
-    justify-content: center;
-    justify-items: center;
-    margin-left: 1vw;
-    margin-top: 1vw;
-    width: 30%;
-    height: 50%;
-    background-color: rgb(240, 240, 240);
-    border-radius: 10px;
-    border: 2px solid rgb(230, 230, 230);;
-    flex-wrap: wrap;
-}
-#LogoOnHints{
-    position: absolute;
-    width: 10%;
-    height: 10vh;
-    margin-top: 10vh;
-    margin-left: 40%;
-
+.BlockFor_BtnChangeSize_Not_Hover{
+  transition: 0.5s;
+  background-color: #121825;
+  border: 1px solid #212c44;
 }
 
-.BlockForBlockImageOnWelcomePanel{
-    padding-top: 3px;
-    border-radius: 10px;
+#BtnChangeSizeToBig{
+  display: block;
+  transition: 0.5s;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+  height: 70%;
+}
+#BtnChangeSizeToSmall{
+  display: none;
+  transition: 0.5s;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+  height: 70%;
+}
+#BlockForLogo_TopPanelForChat{
+  width: 8%;
+  height: 98%;
+  border-radius: 50%;
+  background: #121825;
+  border: 1px solid #232e47;
+}
+#logo_TopPanelForChat{
+  width: 60%;
+  height: 80%;
+  margin-top: 5%;
+  margin-left: 24%;
+}
+#BlockChat{
+  margin-top: 7.1%;
+  position: absolute;
+  width: 95%;
+  height: 60%;
+  background-color: #121825;
+  overflow-y:scroll;
+  box-sizing: border-box;
+  padding-bottom: 10vh;
+}
+.BlockMessageUser{
+  position: relative;
+  
+  margin-top: 2%;
+  height: fit-content;
+  background: #03ffc8;
+  border-radius: 10px;
+  background: linear-gradient(153deg,rgb(18, 24, 37) 11%, rgb(20, 32, 58) 100%);
+  border-left: 1px solid rgb(23, 31, 48);
+  border-top: 1px solid rgb(23, 31, 48);
+
+  display: block;
+}
+.BlockMessageUser_Small{
+  width: 70%;
+  margin-left: 25%;
+}
+.BlockMessageUser_Big{
+  width: 45%;
+  margin-left: 50%;
+}
+.UserText{
+  padding: 2%;
+  font-family: "Open Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  line-height: 1.5;
+  overflow: hidden;
+  color: rgb(195, 205, 253);
+}
+.Icon-User{
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  right: -37px;
+}
+
+.BlockMessageNeiro{
+  position: relative;
+  margin-top: 5%;
+  height: fit-content;
+  background: #03ffc8;
+  border-radius: 10px;
+  background: linear-gradient(153deg,rgb(20, 32, 58) 11%, rgb(18, 24, 37)  100%);
+  border-right: 1px solid rgb(23, 31, 48);
+  border-bottom: 1px solid rgb(23, 31, 48);
+}
+.BlockMessageNeiro_Small{
+  width: 70%;
+  margin-left: 5%;
+}
+.BlockMessageNeiro_Big{
+  width: 40%;
+  margin-left: 5%;
+}
+.Icon-Neiro{
+  position: absolute;
+  left: -37px;
+  width: 36px;
+  height: 36px;
+}
+.NeiroText{
+  padding: 2%;
+  font-family: "Open Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  line-height: 1.5;
+  overflow: hidden;
+  color: rgb(195, 205, 253);
+}
+
+
+#BlockBottomChat{
+  position: absolute;
+  bottom: 11.2vh;
+  width: 95%;
+  height: 8vh;
+  background-color: #121825;
+  box-shadow: 0 -10px 15px rgba(18,24,37);
+  
+}
+#BtnSelectModel{
+  position: absolute;
+  bottom: 0;
+  margin-left: 1%;
+  background-color: #121825;
+  border: 2px solid #1c253a;
+  border-radius: 10px;
+  padding: 0.5%;
+  color: white;
+}
+.Block_InputForChat_Small{
+  position: absolute; /*  Важно: Абсолютное позиционирование */
+  bottom: 10px; /* Прижимаем к низу */
+  width: 95%;
+  height: 13%;
+  margin-left: 0.6%;
+  border-radius: 15px;
+  background-color:#121825;
+}
+.Block_InputForChat_Big{
+  position: absolute;
+  bottom: 20px; /* Прижимаем к низу */
+  width: 90%;
+  height: 7%;
+  border-radius: 8px;
+  margin-left: 3%;
+}
+#InputForChat{
+  background: none;
+  resize:none;
+  padding: 1%;
+  color: white;
+  font-size: 16px;
+}
+.InputForChat_Small{
+  width: 98%;
+  height: 77%;
+  border-radius: 8px;
+}
+.InputForChat_Big{
+
+}
+
+#BlockChat::-webkit-scrollbar,
+#InputForChat::-webkit-scrollbar {
+  width: 1px;
+}
+#GlobalBlockChat::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  margin: -2.5px; 
+  border-radius: 15px;
+  background: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet, red); /* Extend colors */
+  background-size: 500% 500%; /* Make the background larger than the element */
+  animation: gradientAnimation 10s ease infinite; /* Apply the animation */
+}
+.Circle_BRG_neon{
+  position: absolute;
+  z-index: 0;
+  width: 15%;
+  height: 30%;
+  border-radius: 50%;
+  background-color: blue;
+  box-shadow: -10px -10px 200px 40px rgba(43, 185, 138, 0.767);
+  margin-left: 55vw;
+  margin-top: 19%;
+}
+}                                    /* Здесь заканчивается стили для ПК */
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+
+@media only screen and (min-width: 350px) and (max-width: 768px) {
+img{
+  width: 10px;
+  height: 10px;
+}
+#TopPanel{
+  display: none;
+}
+#GlobalBlockChat{
+    position: relative;
+    background-color:#182746;
     width: 100%;
-    display: flex;
-    justify-content: center;
-}
-.BlockForImageOnWelcomePanel{
-    display: flex;
-    width: 50px;
-    height: 100%;
-    background-color: rgb(235, 235, 235);
-    
-    border-radius: 50%;
-}
-.Welcome_ImageOnInfo{
-    margin: auto;
-    width: 50%;
-    height: 70%;
-}
-#ImagePhotoOnWelcomePanel{
-    width: 30px;
-    height: 30px;
-}
-.Welcome_HeaderOnInfo{
-    font-size: 16px;
-    font-weight: 550;
-}
-.Welcome_DescriptionPanels{
-    font-weight: 520;
-    font-size: 12px;
-}
-
-#BlockSelectModel{
-    display: none;
-    position: absolute;
-    width: 15vw;
-    height: 40vh;
-    background-color: rgb(235, 235, 235);
-    border: 2px solid rgb(220, 220, 220);
-    margin-top: -48vh;
-    left: 0;
-    border-radius: 20px;
+    height: 95%;
+    margin-top: 5px;
     padding: 20px;
-    backdrop-filter: blur(25px);
-    opacity: 95%;
-    
 }
 
 
-.BtnModels{
-    width: 100%;
-    height: 7%;
-    font-size: 16px;
-    margin-top: 5%;
-    font-weight: 500;
-    transition: background-color 0.2s;
-    padding: 4px;
-    border-radius: 10px;
-    user-select: none;
+
+#GlobalPage{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
 }
-.BtnModels:hover{
-    background-color: rgb(225, 225, 225);
+.Circle_BRG_neon{
+  display: none;
 }
+
+.Block_InputForChat{
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  height: 8vh;
+  background-color: #3c4457;
+
+}
+#InputForChat{
+
+}
+}
+
+

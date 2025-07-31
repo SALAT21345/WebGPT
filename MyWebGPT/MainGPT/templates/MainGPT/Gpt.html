@@ -1,420 +1,158 @@
-{% extends 'MainGPT/layout.html' %}
 {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>N/S</title>
+    <link rel="stylesheet" href="{%static 'MainGPT/css/Gpt.css'%}">
+</head>
+<body style="background-image: url('{%static 'MainGPT/img/bgrNS.png'%}');">  <!-- eslint-disable-line -->
 
-{% block BodyContent %}
+<div id="GlobalPage">
+    <div id="TopPanel"></div>
+    <div class="Circle_BRG_neon"></div>
+    <div id="WelcomeBlock">
 
 
-<div id="GlobalChat">
-    
-        <div id="Chat">
-            <div id="hints">
-                <img id="LogoOnHints" src="{%static 'MainGPT/img/LogoST.png'%}" alt="">
-                <div id="BlockForWelcometext">
-                    <h1 id="WelcomeText">Привет! Я - Нейро Салат</h1>
-                    <h4>Нейро салат - это бесплатный сервис с доступом к разным нейросетям и удобным интерфейсом 🧐</h4>
-                    <div id="BlockForBlocksOnWelcomePanel">
-                        <div class="InfoForBotBlocks">
-                            <div class="BlockForBlockImageOnWelcomePanel">
-                                <div class="BlockForImageOnWelcomePanel">
-                                    <img class="Welcome_ImageOnInfo" src="{%static 'MainGPT/img/chat.png'%}" alt="">   
-                                </div>
-                            </div>
-
-                            <h1 class="Welcome_HeaderOnInfo">Chat AI</h1>
-                            <h3 class="Welcome_DescriptionPanels">Задавай вопросы разным нейросетям и получай ответы и\или советы.</h3>
-                        </div>
-
-                        <div class="InfoForBotBlocks">
-                            <div class="BlockForBlockImageOnWelcomePanel">
-                                <div class="BlockForImageOnWelcomePanel">
-                                    <img class="Welcome_ImageOnInfo" src="{%static 'MainGPT/img/PhotoLogo (2).png'%}" alt="">   
-                                </div>
-                            </div>
-
-                            <h1 class="Welcome_HeaderOnInfo">Генерация фото</h1>
-                            <h3 class="Welcome_DescriptionPanels">Генерируй любые изображения! Все ограничения лишь у тебя в голове</h3>
-                        </div>
-                        <div class="InfoForBotBlocks">
-                            <div class="BlockForBlockImageOnWelcomePanel">
-                                <div class="BlockForImageOnWelcomePanel">
-                                    <img class="Welcome_ImageOnInfo" src="{%static 'MainGPT/img/LogoChat.png'%}" alt="">   
-                                </div>
-                            </div>
-
-                            <h1 class="Welcome_HeaderOnInfo">Решение примеров по фото</h1>
-                            <h3 class="Welcome_DescriptionPanels">Не можешь справиться с математической задачей? - Сфоткай её и отправь мне!</h3>
-                        </div>
-                    </div>
-                    
-               
-                </div>
-                
-            </div>
-            
-            <div id="BottomPanel"> 
-                <div id="BlockSelectModel">
-                    <h1 id="select_gpt4o" class="BtnModels">Chat GPT-4o</h1>
-                    <h1 id="select_gpt4omini" class="BtnModels">Chat GPT-4o mini</h1>
-                    <h1 id="select_deepseek" class="BtnModels">DeepSeek</h1>
-                    <h1 id="select_llama" class="BtnModels">Llama3-3</h1>
-                </div>
-                <div id="BtnChangeModel">
-                    <h2 id="NameModelOnBtn">Выбрать модель</h2>
-                     <img id="ImgArrowDown" src="{%static 'MainGPT/img/IconDown.png'%}" alt="">
-                </div>
-                <textarea id="inputChat" placeholder="Введите сообщение... " style="user-select: none;"></textarea>
-                <p>Любая нейросеть не гарантирует 100 процентную вероятность точности ответов. <b>Перепроверяйте важную информацию!</b></p>
+    </div>
+    <div id="GlobalBlockChat" class="Small_GlobalBlockChat">
+        <div id="TopPanelForChat">
+            <div id="BlockFor_BtnChangeSize" class="BlockFor_BtnChangeSize_Not_Hover">
+                <img id="BtnChangeSizeToBig" class="BtnChangeSize" src="{%static 'MainGPT/img/ToBig.png'%}" alt="">
+                <img id="BtnChangeSizeToSmall" class="BtnChangeSize"  src="{%static 'MainGPT/img/ToSmall.png'%}" alt="">
             </div>
         </div>
+        <div id="BlockChat">
+            <div class="BlockMessageUser BlockMessageUser_Small">
+                <img class="Icon-User" src="{%static 'MainGPT/img/icon-user.png'%}" alt="Icon-User">
+                <pre class="UserText">Привет.
+Как дела? ыы</pre>
+            </div>
+            <div class="BlockMessageNeiro BlockMessageNeiro_Small">
+                <img src="{%static 'MainGPT/img/icon-GPT.png'%}" alt="" class="Icon-Neiro">
+                    <p class="NeiroText">Встал, вышел, дебил б***ь</p>
+                
+            </div>
+            <div class="BlockMessageUser BlockMessageUser_Small">
+                <img class="Icon-User" src="{%static 'MainGPT/img/icon-user.png'%}" alt="Icon-User">
+                <pre class="UserText">@app.post("/ChatGPT")
+async def chat_stream(dataPrompt: PromptRequest):
+    prompt = ("Родительский промпт. На него отвечать не нужно: Запомни, если тебя спросят 'кто ты?' Всегда отвечай ChatGPT 4o. Теперь уже к промпту пользователя:" + dataPrompt.prompt)
+    response = client_g4f.chat.completions.create(
+        model="gpt-4o",
+        messages=[{"role": "user", "content": prompt}],
+        web_search=False
+    )</pre>
+
+            </div>
+            <div class="BlockMessageNeiro BlockMessageNeiro_Small">
+                <img src="{%static 'MainGPT/img/icon-GPT.png'%}" alt="" class="Icon-Neiro">
+                    <p class="NeiroText">ЫЫЫЫЫыывввввввввввввввввыыы</p>
+                
+            </div>
+
+        </div>
+        <div id="BlockBottomChat">
+            <button id="BtnSelectModel">Выбрать модель</button>
+        </div>
+        <div class="Block_InputForChat_Big">
+            <textarea name="InputForChat" id="InputForChat" class="InputForChat_Small" placeholder="Сюда чепятать буквы "></textarea>
+        </div>
+        
+    </div>
 </div>
 
-
-
-
-
-<link rel="stylesheet" href="{% static 'MainGPT/css/Gpt.css' %}">
-
-<!-- Сторонние файлы и бибилотеки -->
-
-    <script src="{%static 'MainGPT/js/Main.js'%}"></script>
-    <script src="https://unpkg.com/fitty"></script>
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <script src="{%static 'MainGPT/js/Sidebar.js'%}"> </script>
-
-<!-- Сторонние файлы и бибилотеки -->
-
 <script>
-
-var ValidModels = ["ChatGPT", "ChatGPTmini", "DeepSeek", "Llama3-3"];
-let ActiveModel = "";
-const userInput = document.getElementById('inputChat'); 
-
-
-
-window.addEventListener('DOMContentLoaded', () => {
-userInput.disabled = true;
+document.addEventListener('DOMContentLoaded', function() {
+    const _Butn_ThisYou = document.getElementById("Butn_ThisYou");
+    const GlobalBlockChat = document.getElementById("GlobalBlockChat");
+    const BigSize = true; 
 
 
-function checkForUserMessages() 
-{
-    console.log('функция checkForUserMessages - Начало');
-    const chatElement = document.querySelector('#Chat');
-    const hintsElement = document.querySelector('#hints');
-    
-    if (chatElement != null)
+    function ChangeSizeChat()
     {
-        console.log('chatElement != null');
-        if(hintsElement != null)
+        var UserMessages = document.getElementsByClassName('BlockMessageUser');
+        var NeiroMessages = document.getElementsByClassName('BlockMessageNeiro');
+        const BtnChangeSizeToSmall = document.getElementById('BtnChangeSizeToSmall');
+        const BtnChangeSizeToBig = document.getElementById('BtnChangeSizeToBig');
+        const BlockFor_BtnChangeSize = document.getElementById("BlockFor_BtnChangeSize");
+        if(GlobalBlockChat.classList.contains("Big_GlobalBlockChat"))
         {
-            console.log('hintsElement != null');
-            const userMessages = chatElement.querySelectorAll('.UserMessage'); 
-
-            if (userMessages.length > 0) 
+            for(let i = 0; i < UserMessages.length; i++)
             {
-                hintsElement.style.display = 'none'; // Скрываем #hints
-                document.getElementById("NameProject").classList.add("NameProjectHide");
-                console.log("Скрываем подсказки");
-            } 
-
-            else {
-                
-                document.getElementById("NameProject").style.display = 'block';
-                hintsElement.style.display = ''; // Показываем (если скрыто)
-                console.log("Показываем подсказки");
-                
+                UserMessages[i].classList.remove('BlockMessageUser_Big'); // Меняем размер Юзер-сообщения.
+                UserMessages[i].classList.add('BlockMessageUser_Small');
             }
-        }
-    } 
-    else{
-        console.log('chatElement == null');
-    }
-    
-}
-checkForUserMessages();
-
-const input = document.getElementById("inputChat");
-function SetBottomPaddingForGptMessage() {
-    const chatContainer = document.getElementById('Chat');
-    const gptMessages = chatContainer.querySelectorAll('.GPTMessage');
-    const lastGptMessage = gptMessages[gptMessages.length - 1];
-    // const previous_lastGptMessage = gptMessages[gptMessages.length - 2];
-
-    const UserMessages = chatContainer.querySelectorAll('.UserMessage');
-    const lastUserMessage = UserMessages[UserMessages.length - 1];
-
-    if (lastGptMessage) {
-        lastUserMessage.style.paddingBottom = '1vw';
-        lastGptMessage.style.paddingBottom = '10vw';
-        // previous_lastGptMessage.style.paddingBottom = '1vw';
-
-    }
-}
-
-function SetBottomPaddingForUserMessage() {
-    const chatContainer = document.getElementById('Chat');
-    const UserMessages = chatContainer.querySelectorAll('.UserMessage');
-    const lastUserMessage = UserMessages[UserMessages.length - 1];
-
-    const gptMessages = chatContainer.querySelectorAll('.GPTMessage');
-    const lastGptMessage = gptMessages[gptMessages.length - 1];
-
-    if (UserMessages) {
-        if (lastGptMessage)
+            for(let i = 0; i < NeiroMessages.length; i++)
             {
-                lastGptMessage.style.paddingBottom = '1vw';
+                NeiroMessages[i].classList.remove('BlockMessageNeiro_Big');
+                NeiroMessages[i].classList.add('BlockMessageNeiro_Small'); // Меняем размер Нейро-сообщения.
             }
-        lastUserMessage.style.paddingBottom = '10vw';
-    }
-}
+            BlockFor_BtnChangeSize.setAttribute("style","width:7%; margin-left: 92%; transition: 0.2s;");
+            BtnChangeSizeToSmall.style.display = 'none';
+            BtnChangeSizeToBig.style.display = 'block';
+            GlobalBlockChat.classList.remove("Big_GlobalBlockChat");
+            GlobalBlockChat.classList.add("Small_GlobalBlockChat");         // Меняем размер ВСЕГО чата.
+        } 
+        
 
-
-
-
-
-
-function CreateNewMessageByUser(message, save = true) {
-    const NewUserMessage = document.createElement('div');
-    NewUserMessage.classList.add("UserMessage");
-
-    const UserIcon = document.createElement('img');
-    UserIcon.src = "{% static 'MainGPT/img/free-icon-user.png' %}";
-    UserIcon.alt = "User Icon";
-    UserIcon.classList.add("User-Icon");
-
-    const UserText = document.createElement('h1');
-    UserText.classList.add("TextUserPrompt");
-    UserText.innerHTML = message;
-
-    NewUserMessage.appendChild(UserIcon);
-    NewUserMessage.appendChild(UserText);
-    document.getElementById("Chat").appendChild(NewUserMessage);
-
-    SetBottomPaddingForUserMessage();
-    checkForUserMessages();
-
-    if (save) {
-        chatHistory.push({ role: "user", content: message });
-        localStorage.setItem("chatHistory", JSON.stringify(chatHistory));
-    }
-}
-
-function CreateNewMessageByGPT(data, save = true, NeedMod) {
-    
-    if(ValidModels.includes(ActiveModel))
-    {
-        let AnswerGPT = data
-        const NewGPTMessage = document.createElement('div');
-        NewGPTMessage.classList.add("GPTMessage");
-
-        const GPTText = document.createElement('h1');
-        GPTText.classList.add("TextGtpAnswer");
-        if(ActiveModel == "DeepSeek" || ActiveModel == "ChatGPT")
+        else if(GlobalBlockChat.classList.contains("Small_GlobalBlockChat"))
         {
-            try{
-                AnswerGPT = marked.parse(data.text);
+            for(let i = 0; i < UserMessages.length; i++)
+            {
+                UserMessages[i].classList.remove('BlockMessageUser_Small');
+                UserMessages[i].classList.add('BlockMessageUser_Big');
             }
-            catch{
-                console.log("Преобразование не удалось.")
+            for(let i = 0; i< NeiroMessages.length; i++)
+            {
+                NeiroMessages[i].classList.add('BlockMessageNeiro_Big');
+                NeiroMessages[i].classList.remove('BlockMessageNeiro_Small');
             }
-            
+            BlockFor_BtnChangeSize.setAttribute("style","transition: none; width:5%; margin-left: 94%;");
+            BtnChangeSizeToSmall.style.display = 'block';
+            BtnChangeSizeToBig.style.display = 'none';
+            GlobalBlockChat.classList.add("Big_GlobalBlockChat"); 
+            GlobalBlockChat.classList.remove("Small_GlobalBlockChat");
         }
-        
-        GPTText.innerHTML = AnswerGPT;
-
-        const GPTIcon = document.createElement('img');
-        GPTIcon.src = "{% static 'MainGPT/img/icon-GPT.png' %}";
-        GPTIcon.alt = "GPT Icon";
-        GPTIcon.classList.add("GPT-Icon");
-
-        NewGPTMessage.appendChild(GPTIcon);
-        NewGPTMessage.appendChild(GPTText);
-        document.getElementById("Chat").appendChild(NewGPTMessage);
-
-        SetBottomPaddingForGptMessage();
-        userInput.disabled = false;
-
-        if (save) {
-            chatHistory.push({ role: "gpt", content: data });
-            localStorage.setItem("chatHistory", JSON.stringify(chatHistory));
-        }
-        
-
-        
-    }else{
-        console.error("Ошибка при выборе модели.")
-    }
-
-   
-    
-   
-}
-
-function SendPromptNeiro(MsgPrompt, Model) {
-    const exists = ValidModels.includes(Model);
-    if(exists)
-    {
-        fetch(`https://gpt-api-production-ba31.up.railway.app/${Model}`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        mode: 'cors',
-        body: JSON.stringify({
-            prompt: MsgPrompt
-        })
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Сеть ответила с ошибкой');
-        }
-        return response.json();
-    })
-    .then(data => {
-        console.log("Запрос отправился и вернулся корректно");
-        console.log(data);
-        CreateNewMessageByGPT(data);  // учитываем структуру ответа
-        return data
-    })
-    .catch(error => {
-        console.error('Возникла проблема с запросом:', error);
-        CreateNewMessageByGPT('Ошибка при запросе к серверу. Попробуйте позже.');
-    });
     }
     
-}
-
-userInput.addEventListener('keydown', function(event) {
-if (event.key === 'Enter') {
-    if (event.shiftKey) {
-        // Добавляем перенос строки
-        event.preventDefault();
-        const cursorPos = userInput.selectionStart;
-        const value = userInput.value;
-        userInput.value = value.substring(0, cursorPos) + "\n" + value.substring(cursorPos);
-        userInput.selectionStart = userInput.selectionEnd = cursorPos + 1;
-        AutoResizeTextarea(); // обновим высоту
-    } else {
-        // Отправка сообщения
-        event.preventDefault();
-        userInput.disabled = true;
-        const MsgPrompt = userInput.value.trim();
-        if (MsgPrompt !== '') {
-            CreateNewMessageByUser(MsgPrompt);
-            SendPromptNeiro(MsgPrompt, ActiveModel);  
-            console.log("При отправке запроса была выбрана модель: " + ActiveModel);                          // ЗДЕСЬ МЕНЯЕТСЯ МОДЕЛЬ!!!!!
-            userInput.value = '';
-            AutoResizeTextarea();
+    
+    BlockFor_BtnChangeSize.addEventListener('click', ChangeSizeChat);
+    
+    BlockFor_BtnChangeSize.addEventListener('mouseover', () =>{
+        BlockFor_BtnChangeSize.classList.remove('BlockFor_BtnChangeSize_Not_Hover');
+        BlockFor_BtnChangeSize.classList.add('BlockFor_BtnChangeSize_Hover');
+        var BtnsChangeSize = document.getElementsByClassName('BtnChangeSize');
+        for(let i = 0; i < BtnsChangeSize.length;i++)
+        {
+            BtnsChangeSize[i].style.transform = 'scale(0.8)';
         }
-    }
-}
-});
-function AutoResizeTextarea() {
-userInput.style.height = "auto"; // сброс
-const lineHeight = 20; // px, можешь точно замерить по шрифту
-const maxHeight = lineHeight * 10;
-
-if (userInput.scrollHeight > maxHeight) {
-    userInput.style.height = maxHeight + "px";
-    userInput.style.overflowY = "scroll";
-} else {
-    userInput.style.height = userInput.scrollHeight + "px";
-    userInput.style.overflowY = "hidden";
-}
-}
-userInput.addEventListener('input', AutoResizeTextarea);
-let chatHistory = [];
-
-
-function loadChatHistory() {
-const stored = localStorage.getItem('chatHistory');
-if (stored) {
-    chatHistory = JSON.parse(stored);
-    chatHistory.forEach(msg => {
-        if (msg.role === "user") {
-            CreateNewMessageByUser(msg.content, false);
-        } else if (msg.role === "gpt") {
-            CreateNewMessageByGPT(msg.content, false);
+    })
+    BlockFor_BtnChangeSize.addEventListener('mouseout',() =>{
+        BlockFor_BtnChangeSize.classList.remove('BlockFor_BtnChangeSize_Hover');
+        BlockFor_BtnChangeSize.classList.add('BlockFor_BtnChangeSize_Not_Hover');
+        var BtnsChangeSize = document.getElementsByClassName('BtnChangeSize');
+        for(let i = 0; i < BtnsChangeSize.length;i++)
+        {
+            BtnsChangeSize[i].style.transform = 'scale(1)';
         }
-    });
-    AutoResizeTextarea();
-}
-}
-loadChatHistory();
+    })
 
 });
-
-
-
-
-function removeHistory(){
-    localStorage.clear();
-    location.reload();
-}
-const BlockRemoveChat = document.getElementById("BlockRemoveChat").addEventListener("click", removeHistory);
-
-
-const BtnModels = document.getElementsByClassName("BtnModels");
-
-
-userInput.addEventListener("mouseover",() =>{
-    if(ActiveModel == "")
-    {
-       userInput.placeholder = "Выберите модель";
-       userInput.classList.add("inputChatErrorModel");
-    }
-})
-
-userInput.addEventListener("mouseout", () =>{
-
-    userInput.classList.remove("inputChatErrorModel");
-    userInput.placeholder = "Введите сообщение";
-    
-    
-})
-
-for (let i = 0; i < BtnModels.length; i++) {
-    const model = BtnModels[i];
-
-    model.addEventListener("click", () => {
-        const BlockSelectModel = document.getElementById("BlockSelectModel");
-        userInput.disabled = false;
-        switch (model.textContent) {
-            case "Chat GPT-4o":
-                ActiveModel = "ChatGPT";
-                break;
-            case "Chat GPT-4o mini": 
-                ActiveModel = "ChatGPTmini";
-                break;
-            case "DeepSeek":
-                ActiveModel = "DeepSeek";
-                break;
-            case "Llama3-3":
-                ActiveModel = "Llama3-3";
-                break;
-            default:
-                ActiveModel = "Выбрать модель";
-                break;
-        }
-        BlockSelectModel.style.display = 'none';
-        console.log("ActiveModel:", ActiveModel);
-        document.getElementById("NameModelOnBtn").textContent = model.textContent;
-    });
-}
-const BtnChangeModel = document.getElementById("BtnChangeModel");
-
-BtnChangeModel.addEventListener("click", () =>{
-    const BlockSelectModel = document.getElementById("BlockSelectModel");
-
-    if(BlockSelectModel.style.display == 'none')
-    {
-        BlockSelectModel.style.display = 'block';        
-    }else{
-        BlockSelectModel.style.display = 'none';        
-    }
-})
-
-
-
-
 </script>
-{% endblock %}
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
